@@ -208,10 +208,11 @@ export default function App() {
     const L = window.L;
     const map = L.map(mapEl.current, { zoomControl: true, attributionControl: true })
       .setView([57.7025, 11.958], 13);
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      maxZoom: 20,
+      subdomains: "abcd",
       className: "osm-tiles",
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
     }).addTo(map);
     layerRef.current = L.layerGroup().addTo(map);
     map.on("click", (e) => {
@@ -315,7 +316,7 @@ export default function App() {
         .label{font-family:'Outfit';font-weight:600;font-size:.95rem;margin:0 6px 0 0;}
         .mapbox{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 1px 3px rgba(35,32,48,.05);}
         #map{height:440px;width:100%;background:var(--gray-soft);}
-        .osm-tiles{filter:saturate(.6) contrast(.92) brightness(1.05);}
+        .osm-tiles{filter:saturate(.9) hue-rotate(-8deg);}
         .pin{width:100%;height:100%;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(35,32,48,.35);position:relative;}
         .pin-sun{background:var(--pink);}
         .pin-cloud{background:#b3aec2;}
